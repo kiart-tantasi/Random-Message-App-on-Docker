@@ -7,15 +7,19 @@ const dir = "resources/files/note.txt";
 app.get("/", (req, res)  => {
     res.json({message: "HELLO WORLD"});
     fs.appendFile(dir, "HELLO WORLD" + "\n", err => {
-        if (err) console.error(err);
+        if (err) {
+            console.error(err);
+            res.sendStatus(500);
+        }
         else res.json({message: "HELLO WORLD"});
     });
 });
 
 app.get("/read", (req, res) => {
     fs.readFile(dir, "utf-8", (err, data) => {
-        if (err) console.log(err);
-        else {
+        if (err) {
+            res.sendStatus(500);
+        } else {
             res.json(data);
         }
     })
@@ -34,14 +38,20 @@ app.get("/random", (req, res)  => {
     const word = array[randomNumber];
 
     return fs.appendFile(dir, word + "\n", err => {
-        if (err) console.error(err);
+        if (err) {
+            console.error(err);
+            res.sendStatus(500);
+        }
         else res.json({message: word});
     });
 });
 
 app.get("/delete", (req, res) => {
     fs.unlink(dir, err => {
-        if (err) console.error(err);
+        if (err) {
+            console.error(err);
+            res.sendStatus(500);
+        }
         else res.sendStatus(200);
     });
 });
