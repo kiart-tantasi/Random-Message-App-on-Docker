@@ -17,4 +17,9 @@ EXPOSE 8080
 
 CMD ["npm","start"]
 
-#  docker run -p 4000:8080 --mount source=global-volume,target=/global-volume a32722914f27
+
+# commands
+
+# docker create volume random
+
+# docker run -dp 4000:8080 -v random:/src/resources/files random
