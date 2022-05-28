@@ -12,14 +12,22 @@ RUN npm install
 COPY . .
 
 # port that container will listen to at runtime (8080 for public access)
-ENV PORT=8080
-EXPOSE 8080
+ENV PORT=4000
+EXPOSE 4000
 
-CMD ["npm","start"]
+CMD ["node","app.js"]
 
 
 # commands
 
 # docker create volume random
 
-# docker run -dp 4000:8080 -v random:/src/resources/files random
+# docker run -dp 4000:4000 -v random:/src/resources/files random
+
+
+
+
+# docker run -dp 4000:4000 `
+# -w /src -v "$(pwd):/src" `
+# node:16 `
+# sh -c "yarn install && yarn run dev"

@@ -5,13 +5,13 @@ const fs = require('fs');
 const dir = "resources/files/note.txt";
 
 app.get("/", (req, res)  => {
-    res.json({message: "HELLO WORLD"});
     fs.appendFile(dir, "HELLO WORLD" + "\n", err => {
         if (err) {
             console.error(err);
             res.sendStatus(500);
+        } else {
+            res.json({message: "Hello World"});
         }
-        else res.json({message: "HELLO WORLD"});
     });
 });
 
@@ -41,8 +41,9 @@ app.get("/random", (req, res)  => {
         if (err) {
             console.error(err);
             res.sendStatus(500);
-        }
-        else res.json({message: word});
+        } else {
+            res.json({message: word});
+        } 
     });
 });
 
@@ -51,10 +52,11 @@ app.get("/delete", (req, res) => {
         if (err) {
             console.error(err);
             res.sendStatus(500);
-        }
-        else res.sendStatus(200);
+        } else {
+            res.sendStatus(200);
+        } 
     });
 });
 
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 4000;
 app.listen(port, () => console.log("RUNNING ON PORT", port));
