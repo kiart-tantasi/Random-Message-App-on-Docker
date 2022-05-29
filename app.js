@@ -5,12 +5,12 @@ const fs = require('fs');
 const dir = "resources/files/note.txt";
 
 app.get("/", (req, res)  => {
-    fs.appendFile(dir, "HELLO WORLD" + "\n", err => {
+    fs.appendFile(dir, "Hello World !" + "\n", err => {
         if (err) {
             console.error(err);
             res.sendStatus(500);
         } else {
-            res.json({message: "Hello World"});
+            res.json({message: "Hello World !"});
         }
     });
 });

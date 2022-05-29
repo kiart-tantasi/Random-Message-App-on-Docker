@@ -2,7 +2,7 @@
 FROM node:16
 
 # commands after this line will work in this working directory
-WORKDIR /src
+WORKDIR /app
 
 # install dependecy
 COPY package*.json ./ 
@@ -20,14 +20,39 @@ CMD ["node","app.js"]
 
 # commands
 
-# docker create volume random
+# docker run -dp 4000:4000 random
 
-# docker run -dp 4000:4000 -v random:/src/resources/files random
+# docker run -dp 4000:4000 -v random:/app/resources/files random
 
+# docker run -dp 4000:4000 -v "C:/Users/petch/Desktop/docker-test/resources/files:/app/resources/files" random
 
+#  ---------------------------- dev ----------------------------
 
+# FROM node:12-alpine
+
+# RUN apk add --no-cache python2 g++ make
+
+# WORKDIR /app
+
+# COPY . .
+
+# RUN yarn install --production
+
+# CMD ["node", "app.js"]
+
+# EXPOSE 4000
+
+# 12-alpine
 
 # docker run -dp 4000:4000 `
-# -w /src -v "$(pwd):/src" `
-# node:16 `
-# sh -c "yarn install && yarn run dev"
+#      -w /app -v "C:/Users/petch/Desktop/docker-test:/app" `
+#      node:12-alpine `
+#      sh -c "yarn install && yarn run dev"
+
+
+# 16
+
+# docker run -dp 4000:4000 `
+#      -w /app -v "C:/Users/petch/Desktop/docker-test:/app" `
+#      node:12-alpine `
+#      sh -c "yarn install && yarn run dev"
