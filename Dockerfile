@@ -1,5 +1,5 @@
 # load image (nodejs)
-FROM node:16
+FROM node:16.15.0-slim
 
 # commands after this line will work in this working directory
 WORKDIR /app

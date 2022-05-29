@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const app = express();
 const fs = require('fs');
@@ -7,7 +8,7 @@ const dir = "resources/files/note.txt";
 
 // connect MySQL on random DB
 const connection = mysql.createConnection({
-    host: 'localhost',
+    host: process.env.MYSQL_HOST,
     user: 'root',
     password: 'password',
     database: 'random'
